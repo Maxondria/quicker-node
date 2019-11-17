@@ -7,6 +7,14 @@ if (cluster.isMaster) {
   in other works, a slave is created, on any requests now, they will go the 'else' part...,
   This isn't help at the moment, only one worker slave created anyway*/
   cluster.fork();
+  /**
+   * Let' add more slaves
+   *
+   * SUBSEQUENT REQUESTS WON'T HAVE TO WAIT, THE SERVER CAN NOW USE OTHER SLAVES TO PROCESS THEM
+   */
+  cluster.fork();
+  cluster.fork();
+  cluster.fork();
 } else {
   // I am a slave, my job is being a server and nothing else
   const express = require("express");
@@ -22,6 +30,10 @@ if (cluster.isMaster) {
   app.get("/", (req, res) => {
     doWork(5000); //Server blocked for 5s, all other requests must wait...
     res.send("Hi there...");
+  });
+
+  app.get("/fast", (req, res) => {
+    res.send("No work, I am simply fast!");
   });
 
   app.listen(3000);
