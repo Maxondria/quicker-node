@@ -1,0 +1,10 @@
+{
+  "name": "quick-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Maxon Tayebwa <maxtayebwa@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
