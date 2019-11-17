@@ -1,4 +1,3 @@
-// I am a slave, my job is being a server and nothing else
 const express = require("express");
 const crypto = require("crypto");
 
